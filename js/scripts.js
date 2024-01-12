@@ -18,3 +18,4 @@ let pokemonList = [
         abilities: ['Intimidte', 'Shed Skin', 'Unnerve']
     },
   ]
+  console.log(pokemonList);
