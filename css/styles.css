@@ -1,7 +1,16 @@
-/* primary font: Chakra Petch */
+/* 
+primary font: Chakra Petch 
+background color: goldenrod
+
+*/
 
 
 body {
     background-color: goldenrod;
     font-family: "Chakra Petch", sans-serif;
+}
+
+h1 {
+    font-family: "Chakra Petch", sans-serif;
+    font-weight: 600;
 }
