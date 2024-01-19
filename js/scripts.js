@@ -36,4 +36,8 @@ let pokemonList = [
         abilities: ['Flash-fire', 'Flame-body', 'Run-away']
     }
   ]
-  console.log(pokemonList);
+
+for (let i = 0; i < pokemonList.length; i++){
+document.write(pokemonList[i].name + '(height:' + pokemonList[i].height + ')')
+}
+console.log(pokemonList);
