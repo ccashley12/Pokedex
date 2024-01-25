@@ -1,4 +1,5 @@
-let pokemonList = [
+let pokemonRepository = (function () {
+    let pokemonList = [
     {
         name: 'Charmeleon',
         type: 'FIRE',
@@ -35,8 +36,22 @@ let pokemonList = [
         height: 1.7,
         abilities: ['Flash-fire', 'Flame-body', 'Run-away']
     }
-  ]
+    ];
 
+    return {
+        add: function(pokemon) {
+            pokemonList.push(pokemon);
+        },
+        getAll: function() {
+            return pokemonList;
+        }
+    };
+
+})();
+
+console.log(pokemonRepository.getAll());
+pokemonRepository.add({ name: 'any'});
+console.log(pokemonRepository.getAll());
 
 pokemonList.forEach( (item, i, arr) => {
         document.write(pokemonList[i].name + '(height:' + pokemonList[i].height + ')')
