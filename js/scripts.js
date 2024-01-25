@@ -55,11 +55,3 @@ let pokemonRepository = (function () {
 console.log(pokemonRepository.getAll());
 pokemonRepository.add({ name: 'any'});
 console.log(pokemonRepository.getAll());
-
-pokemonList.forEach( (item, i, arr) => {
-        document.write(pokemonList[i].name + '(height:' + pokemonList[i].height + ')')
-        if (pokemonList[i].height > 3) {
-            document.write('ABSOLUTE UNIT!!');
-        }
-        
-        console.log(i, item, arr)});
