@@ -42,7 +42,7 @@ let pokemonRepository = (function () {
         return pokemonList;
     }
     function add () {
-        return pokemonList.push(pokemon);
+        return pokemonList.push(item);
     }
 
     return {
