@@ -37,9 +37,11 @@ let pokemonList = [
     }
   ]
 
-pokemonList.forEach( item => {
-        document.write(pokemonList[item].name + '(height:' + pokemonList[item].height + ')')
-        if (pokemonList[item].height > 3) {
+
+pokemonList.forEach( (item, i, arr) => {
+        document.write(pokemonList[i].name + '(height:' + pokemonList[i].height + ')')
+        if (pokemonList[i].height > 3) {
             document.write('ABSOLUTE UNIT!!');
         }
-        console.log(item)});
+        
+        console.log(i, item, arr)});
