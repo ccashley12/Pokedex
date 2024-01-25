@@ -38,14 +38,17 @@ let pokemonRepository = (function () {
     }
     ];
 
+    function getAll () {
+        return pokemonList;
+    }
+    function add () {
+        return pokemonList.push(pokemon);
+    }
+
     return {
-        add: function(pokemon) {
-            pokemonList.push(pokemon);
-        },
-        getAll: function() {
-            return pokemonList;
-        }
-    };
+        getAll: getAll,
+        add: add
+    }
 
 })();
 
@@ -53,7 +56,7 @@ console.log(pokemonRepository.getAll());
 pokemonRepository.add({ name: 'any'});
 console.log(pokemonRepository.getAll());
 
-pokemonRepository.forEach( (item, i, arr) => {
+pokemonList.forEach( (item, i, arr) => {
         document.write(pokemonList[i].name + '(height:' + pokemonList[i].height + ')')
         if (pokemonList[i].height > 3) {
             document.write('ABSOLUTE UNIT!!');
