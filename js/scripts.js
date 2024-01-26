@@ -56,6 +56,6 @@ console.log(pokemonRepository.getAll());
 pokemonRepository.add({ name: 'Pikachu'});
 
 pokemonRepository.getAll().forEach( (item, i, arr) => {
-    document.write(pokemonRepository.getAll + ' <br>');
-    
-    console.log(i, item, arr)});
+    document.write(pokemonRepository + ' <br>');
+    ``
+  })();
