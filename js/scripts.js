@@ -54,8 +54,8 @@ let pokemonRepository = (function () {
 
 console.log(pokemonRepository.getAll());
 pokemonRepository.add({ name: 'any'});
-document.write(pokemonRepository.getAll[i].name + '(height:' + pokemonRepository.getAll[i].height + ')')
-        if (pokemonRepository.getAll[i].height > 3) {
+document.write(pokemonRepository.getAll.name + '(height:' + pokemonRepository.getAll.height + ')')
+        if (pokemonRepository.getAll.height > 3) {
             document.write('ABSOLUTE UNIT!!');
         }
 
