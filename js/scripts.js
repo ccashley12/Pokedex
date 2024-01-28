@@ -58,7 +58,7 @@ pokemonRepository.add({ name: 'any'});
 pokemonRepository.getAll().forEach( item => {
     document.write(item.name + '(height:' + item.height + ')' + '<br>');
     if (item.height > 3) {
-        document.write('ABSOLUTE UNIT!!');
+        document.write ('ABSOLUTE UNIT!!');
     }
         console.log(item);
-});
+})();
