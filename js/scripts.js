@@ -61,4 +61,4 @@ pokemonRepository.getAll().forEach( item => {
         document.write ('ABSOLUTE UNIT!!');
     }
         console.log(item);
-})();
+});
