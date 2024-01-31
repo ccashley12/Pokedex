@@ -56,12 +56,13 @@ console.log(pokemonRepository.getAll());
 pokemonRepository.add({ name: 'any'});
 
 pokemonRepository.getAll().forEach( item => {
-    if (item.height > 3) {
-        document.write (item.name + ' (height:' + item.height + 'ABSOLUTE UNIT!!' + ')' + '<br>');
-    }
-    else {
-        document.write (item.name + ' (height:' + item.height + ')' + '<br>');
-    }
-
+    let pokemonList = document.querySelector('.ul');
+    let listItem = document.createElement('li');
+    let button = document.createElement('button')
+    button.innerText = 'Pokemon';
+    pokemonList.classList.add('pokemon-list');
+    pokemonList.appendChild(button);
+    pokemonList.appendChild(listItem);
+   
     console.log(item);
 });
