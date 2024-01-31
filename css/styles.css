@@ -16,8 +16,8 @@ h1 {
 }
 
 .pokemon-list {
-    border: 3px rgba(255, 0, 0, 0);
+    border: 5px #000;
     height: 50px;
     margin-bottom: 10px;
     list-style: none;
-  }
+}
