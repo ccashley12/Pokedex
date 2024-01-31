@@ -60,7 +60,7 @@ pokemonRepository.getAll().forEach( item => {
     let listItem = document.createElement('li');
     let button = document.createElement('button')
     button.innerText = 'Pokemon';
-    pokemonList.classList.add('pokemon-list');
+    button.classList.add('pokemon-list');
     pokemonList.appendChild(button);
     pokemonList.appendChild(listItem);
    
