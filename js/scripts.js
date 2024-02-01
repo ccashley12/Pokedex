@@ -55,11 +55,11 @@ let pokemonRepository = (function () {
 console.log(pokemonRepository.getAll());
 pokemonRepository.add({ name: 'any'});
 
-pokemonRepository.getAll().forEach( item => {
+pokemonRepository.getAll().forEach(function (pokemon) {
     let pokemonList = document.querySelector('.pokemon-list');
     let listpokemon = document.createElement('li');
     let button = document.createElement('button')
-    button.innerText = 'Pokemon';
+    button.innerText = pokemon.name;
     button.classList.add('button-class');
     listpokemon.appendChild(button);
     pokemonList.appendChild(listpokemon);
