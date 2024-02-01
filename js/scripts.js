@@ -50,12 +50,22 @@ let pokemonRepository = (function () {
             console.log("pokemon is not correct");
         }
     }
+    function addListItem(pokemon) {
+        let pokemonList = document.querySelector('.pokemon-list');
+        let listpokemon = document.createElement('li');
+        let button = document.createElement('button')
+        button.innerText = pokemon.name;
+        button.classList.add('button-class');
+        listpokemon.appendChild(button);
+        pokemonList.appendChild(listpokemon);
+    }
     function getAll() {
         return pokemonList;
     }
     return {
         add: add,
         getAll: getAll,
+        addListItem: addListItem,
     };
 })();
 
@@ -65,13 +75,5 @@ pokemonRepository.add({ name: 'Flareon',type: 'FIRE', height: .9, abilities: ['F
 console.log(pokemonRepository.getAll());
 
 pokemonRepository.getAll().forEach(function (pokemon) {
-    let pokemonList = document.querySelector('.pokemon-list');
-    let listpokemon = document.createElement('li');
-    let button = document.createElement('button')
-    button.innerText = pokemon.name;
-    button.classList.add('button-class');
-    listpokemon.appendChild(button);
-    pokemonList.appendChild(listpokemon);
-   
-    console.log(pokemon);
+   pokemonRepository.addListItem(pokemon);
 });
