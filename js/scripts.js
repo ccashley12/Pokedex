@@ -40,14 +40,14 @@ let pokemonRepository = (function () {
 
     function add (pokemon) {
         if (
-            typeof pokemon === "object" &&
+            typeof pokemon === 'object' &&
             "name" in pokemon &&
             "height" in pokemon &&
             "type" in pokemon
         ) {
            pokemonList.push(pokemon); 
         } else {
-            console.log("pokemon is not correct");
+            console.log('pokemon is not correct');
         }
     }
     function addListItem(pokemon) {
