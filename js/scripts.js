@@ -73,5 +73,5 @@ pokemonRepository.getAll().forEach(function (pokemon) {
     listpokemon.appendChild(button);
     pokemonList.appendChild(listpokemon);
    
-    console.log(item);
+    console.log(pokemon);
 });
