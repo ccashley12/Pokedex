@@ -38,22 +38,31 @@ let pokemonRepository = (function () {
     }
     ];
 
-    function getAll () {
+    function add (pokemon) {
+        if (
+            typeof pokemon === "object" &&
+            "name" in pokemon &&
+            "height" in pokemon &&
+            "type" in pokemon
+        ) {
+           pokemonList.push(pokemon); 
+        } else {
+            console.log("pokemon is not correct");
+        }
+    }
+    function getAll() {
         return pokemonList;
     }
-    function add (pokemon) {
-        return pokemonList.push(pokemon);
-    }
-
     return {
+        add: add,
         getAll: getAll,
-        add: add
-    }
-
+    };
 })();
 
 console.log(pokemonRepository.getAll());
-pokemonRepository.add({ name: 'any'});
+pokemonRepository.add({ name: 'Flareon',type: 'FIRE', height: .9, abilities: ['Flash-fire', 'Guts']});
+
+console.log(pokemonRepository.getAll());
 
 pokemonRepository.getAll().forEach(function (pokemon) {
     let pokemonList = document.querySelector('.pokemon-list');
