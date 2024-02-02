@@ -1,54 +1,19 @@
 let pokemonRepository = (function () {
-    let pokemonList = [
-    {
-        name: 'Charmeleon',
-        type: 'FIRE',
-        height: 1.1,
-        abilities: ['Blaze', 'Solar-power']
-    },
-    {
-        name: 'Butterfree',
-        type: 'FLYING',
-        height: 1.1,
-        abilities: ['Compoundeyes', 'Tinted-lens']
-    },
-    {
-        name: 'Arbok',
-        type: 'POISON',
-        height: 3.5,
-        abilities: ['Intimidte', 'Shed Skin', 'Unnerve']
-    },
-    {
-        name: 'Pikachu',
-        type: 'ELECTRIC',
-        height: .4,
-        abilities: ['Static', 'Lightingrod']
-    },
-    {
-        name: 'Ninetales',
-        type: 'FIRE',
-        height: 1.1,
-        abilities: ['Flash-fire', 'Drought']
-    },
-    {
-        name: 'Rapidash',
-        type: 'FIRE',
-        height: 1.7,
-        abilities: ['Flash-fire', 'Flame-body', 'Run-away']
-    }
-    ];
+    let pokemonList = [];
+    let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
 
     function add (pokemon) {
         if (
             typeof pokemon === 'object' &&
-            "name" in pokemon &&
-            "height" in pokemon &&
-            "type" in pokemon
+            'name' in pokemon
         ) {
            pokemonList.push(pokemon); 
         } else {
             console.log('pokemon is not correct');
         }
+    }
+    function getAll() {
+        return pokemonList;
     }
     function addListItem(pokemon) {
         let pokemonList = document.querySelector('.pokemon-list');
@@ -56,31 +21,58 @@ let pokemonRepository = (function () {
         let button = document.createElement('button')
         button.innerText = pokemon.name;
         button.classList.add('button-class');
-        button.addEventListener('click', function showDetails(pokemon) {
-            console.log(button.innerText);
-        })
         listpokemon.appendChild(button);
         pokemonList.appendChild(listpokemon);
+        button.addEventListener('click', function (event) {
+            showDetails(pokemon);
+        });
     }
-    function showDetails(pokemon) {
-        console.log(pokemon);
+    function loadList() {
+        return fetch(apiUrl).then(function (response) {
+            return response.json();
+        }).then(function (json) {
+            json.results.forEach(function (item) {
+                let pokemon = {
+                    name: item.name,
+                    detailsUrl: item.url
+                };
+                add(pokemon);
+                console.log(pokemon);
+            });
+        }).catch(function (e) {
+            console.error(e);
+        })
     }
-    function getAll() {
-        return pokemonList;
+    function loadDetails(item) {
+        let url = item.detailsUrl;
+        return fetch(url).then(function (response) {
+            return response.json();
+        }).then(function (details) {
+            item.imageUrl = details.sprites.front_default;
+            item.height = details.height;
+            item.types = details.types;
+        }).catch(function (e) {
+            console.error(e);
+        });
+    }
+    function showDetails(item) {
+        pokemonRepository.loadDetails(item).then (function () 
+        {
+            console.log(item);
+        });
     }
     return {
         add: add,
-        addListItem: addListItem,
-        showDetails: showDetails,
         getAll: getAll,
+        addListItem: addListItem,
+        loadList: loadList,
+        loadDetails: loadDetails,
+        showDetails: showDetails
     };
 })();
 
-console.log(pokemonRepository.getAll());
-pokemonRepository.add({ name: 'Flareon',type: 'FIRE', height: .9, abilities: ['Flash-fire', 'Guts']});
-
-console.log(pokemonRepository.getAll());
-
-pokemonRepository.getAll().forEach(function (pokemon) {
-   pokemonRepository.addListItem(pokemon);
+pokemonRepository.loadList().then(function() {
+    pokemonRepository.getAll().forEach(function(pokemon) {
+        pokemonRepository.addListItem(pokemon);
+    });
 });
