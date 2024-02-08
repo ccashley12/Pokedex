@@ -1,6 +1,7 @@
 let pokemonRepository = (function () {
     let pokemonList = [];
     let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
+
     let modalContainer = document.querySelector('#modal-container');
 
     // Function to show details of Pokémon in modals
@@ -124,9 +125,7 @@ let pokemonRepository = (function () {
 
     // Function to show details of a Pokémon and show modal
     function showDetails(pokemon) {
-        loadDetails(pokemon).then(() => {
-          showModal(pokemon);
-        });
+          showModal(pokemon)
     }
     
     return {
