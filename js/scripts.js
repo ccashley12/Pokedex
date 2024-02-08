@@ -96,12 +96,12 @@ let pokemonRepository = (function () {
             return response.json();
         }).then(function (json) {
             json.results.forEach(function (pokemon) {
-                let pokemon = {
+                let pokemonDetails = {
                     name: pokemon.name,
                     detailsUrl: pokemon.url
                 };
-                add(pokemon);
-                console.log(pokemon);
+                add(pokemonDetails);
+                console.log(pokemonDetails);
             });
         }).catch(function (e) {
             console.error(e);
