@@ -2,10 +2,9 @@ let pokemonRepository = (function () {
     let pokemonList = [];
     let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
 
-    let modalContainer = document.querySelector('#modal-container');
-
     // Function to show details of Pokémon in modals
     function showModal(title, text, img) {
+        let modalContainer = document.querySelector('#modal-container');
 
         // Clear all existing modal content
         modalContainer.innerHTML = '';
@@ -38,9 +37,17 @@ let pokemonRepository = (function () {
 
         modalContainer.classList.add('is-visible');
     }
+        document.querySelector('#show-modal').addEventListener('click', () => {
+            showModal('pokemon');
+        })
+    });
+
+    document.querySelector('#show-modal').addEventListener('click', () => {
+        showModal('pokemon');
 
     // Function to hide modal when visible
     function hideModal() {
+        let modalContainer = document.querySelector('#modal-container');
         modalContainer.classList.remove('is-visible');
     }
 
@@ -125,7 +132,7 @@ let pokemonRepository = (function () {
 
     // Function to show details of a Pokémon and show modal
     function showDetails(pokemon) {
-          showModal(pokemon)
+          showModal(pokemon.name, pokemon.name + ' Height: ' + pokemon.height + '<br>' + ' Type: ' + pokemon.types + '<br>' + ' Abilities: ' + pokemon.abilities)
     }
     
     return {
