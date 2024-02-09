@@ -48,18 +48,18 @@ let pokemonRepository = (function () {
         modalContainer.classList.remove('is-visible');
     }
 
-    // Hide modal by pressing down Escape on keyboard
-    window.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && modalContainer.classList.contains('is-visible')) {
-            hideModal(); 
-        }
-    });
-
     // Hide modal when user clicks outside of modal
     modalContainer.addEventListener('click', (e) => {
         let target = e.target;
         if (target === modalContainer) {
             hideModal();
+        }
+    });
+
+    // Hide modal by pressing down Escape on keyboard
+    window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modalContainer.classList.contains('is-visible')) {
+            hideModal(); 
         }
     });
 
@@ -129,7 +129,7 @@ let pokemonRepository = (function () {
 
     // Function to show details of a Pokémon and show modal
     function showDetails(pokemon) {
-          showModal(pokemon.name, pokemon.name + ' Height: ' + pokemon.height + '<br>' + ' Type: ' + pokemon.types + '<br>' + ' Abilities: ' + pokemon.abilities)
+          showModal(pokemon.name, pokemon.name + ' Height: ' + pokemon.height + ' Type: ' + pokemon.types + '<br>' + ' Abilities: ' + pokemon.abilities)
     }
     
     return {
