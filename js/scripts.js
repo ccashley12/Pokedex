@@ -36,14 +36,11 @@ let pokemonRepository = (function () {
         modalContainer.appendChild(modal);
 
         modalContainer.classList.add('is-visible');
-    }
+    
         document.querySelector('#show-modal').addEventListener('click', () => {
             showModal('pokemon');
-        })
-    });
-
-    document.querySelector('#show-modal').addEventListener('click', () => {
-        showModal('pokemon');
+        });
+    }    
 
     // Function to hide modal when visible
     function hideModal() {
