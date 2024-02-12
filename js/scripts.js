@@ -17,6 +17,7 @@ let pokemonRepository = (function () {
         let closeButtonElement = document.createElement('button');
         closeButtonElement.classList.add('modal-close');
         closeButtonElement.innerText = 'Close';
+        closeButtonElement.addEventListener('click', hideModal);
 
         let titleElement = document.createElement('h1');
         titleElement.innerText = title;
@@ -134,9 +135,8 @@ let pokemonRepository = (function () {
     function showDetails(pokemon) {
             console.log(pokemon);
         let types = pokemon.types.map(type => type.type.name).join(', ');
-        let abilities = pokemon.abilities ? pokemon.abilities.map(ability => ability.ability.name).join(', ') : 'N/A';
 
-        showModal(pokemon.name, `Height: ${pokemon.height} Type: ${types} Abilities: ${abilities}`, pokemon.imageUrl);
+        showModal(pokemon.name, `Height: ${pokemon.height} Type: ${types}`, pokemon.imageUrl);
     }
     
     return {
