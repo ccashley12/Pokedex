@@ -1,15 +1,16 @@
 let pokemonRepository = (function () {
     let pokemonList = [];
     let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
+    let modalContainer = document.querySelector('#modal-container');
 
     // Function to show details of Pokémon in modals
     function showModal(title, text, img) {
-        let modalContainer = document.querySelector('#modal-container');
 
         // Clear all existing modal content
         modalContainer.innerHTML = '';
 
         let modal = document.createElement('div');
+
         modal.classList.add('modal');
 
         // Add new modal content
@@ -91,7 +92,9 @@ let pokemonRepository = (function () {
         pokemonList.appendChild(listpokemon);
 
         button.addEventListener('click', function () {
-            showDetails(pokemon);
+            loadDetails(pokemon).then(function () {
+                showDetails(pokemon);
+            });
         });
     }
 
@@ -129,7 +132,11 @@ let pokemonRepository = (function () {
 
     // Function to show details of a Pokémon and show modal
     function showDetails(pokemon) {
-          showModal(pokemon.name, pokemon.name + ' Height: ' + pokemon.height + ' Type: ' + pokemon.types + '<br>' + ' Abilities: ' + pokemon.abilities)
+            console.log(pokemon);
+        let types = pokemon.types.map(type => type.type.name).join(', ');
+        let abilities = pokemon.abilities ? pokemon.abilities.map(ability => ability.ability.name).join(', ') : 'N/A';
+
+        showModal(pokemon.name, `Height: ${pokemon.height} Type: ${types} Abilities: ${abilities}`, pokemon.imageUrl);
     }
     
     return {
