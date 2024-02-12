@@ -49,18 +49,18 @@ let pokemonRepository = (function () {
         modalContainer.classList.remove('is-visible');
     }
 
+    // Hide modal by pressing down Escape on keyboard
+    window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modalContainer.classList.contains('is-visible')) {
+            hideModal(); 
+        }
+    });
+
     // Hide modal when user clicks outside of modal
     modalContainer.addEventListener('click', (e) => {
         let target = e.target;
         if (target === modalContainer) {
             hideModal();
-        }
-    });
-
-    // Hide modal by pressing down Escape on keyboard
-    window.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && modalContainer.classList.contains('is-visible')) {
-            hideModal(); 
         }
     });
 
