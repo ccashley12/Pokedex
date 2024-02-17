@@ -4,6 +4,9 @@ background color: goldenrod
 
 */
 
+.page-container {
+    margin-top: 100px;
+}
 
 body {
     background-color: goldenrod;
@@ -34,15 +37,3 @@ body {
     display: grid;
     text-align: center;
 }
-
-/* .modal {
-    margin: auto;
-    display: inline-block;
-    box-sizing: border-box;
-    background: blanchedalmond;
-    padding: 15px;
-    width: 100%;
-    max-width: 700px;
-    text-align: left;
-} */
-  
