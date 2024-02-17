@@ -38,26 +38,26 @@ let pokemonRepository = (function () {
         modalBody.append(abilitiesElement);
     }   
 
-    // // Function to hide modal when visible
-    // function hideModal() {
-    //     let modalContainer = document.querySelector('#modal-container');
-    //     modalContainer.classList.remove('is-visible');
-    // }
+    // Function to hide modal when visible
+    function hideModal() {
+        let modalContainer = document.querySelector('#modal-container');
+        modalContainer.classList.remove('is-visible');
+    }
 
-    // // Hide modal by pressing down Escape on keyboard
-    // window.addEventListener('keydown', (e) => {
-    //     if (e.key === 'Escape' && modalContainer.classList.contains('is-visible')) {
-    //         hideModal(); 
-    //     }
-    // });
+    // Hide modal by pressing down Escape on keyboard
+    window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modalContainer.classList.contains('is-visible')) {
+            hideModal(); 
+        }
+    });
 
-    // // Hide modal when user clicks outside of modal
-    // modalContainer.addEventListener('click', (e) => {
-    //     let target = e.target;
-    //     if (target === modalContainer) {
-    //         hideModal();
-    //     }
-    // });
+    // Hide modal when user clicks outside of modal
+    modalContainer.addEventListener('click', (e) => {
+        let target = e.target;
+        if (target === modalContainer) {
+            hideModal();
+        }
+    });
 
     // Function to add Pokémon to the list
     function add (pokemon) {
@@ -75,23 +75,6 @@ let pokemonRepository = (function () {
     function getAll() {
         return pokemonList;
     }
-
-    // // Add list of buttons to array
-    // function addListItem(pokemon) {
-    //     let pokemonList = document.querySelector('.pokemon-list');
-    //     let listpokemon = document.createElement('li');
-    //     let button = document.createElement('button')
-    //     button.innerText = pokemon.name;
-    //     button.classList.add('button-class');
-    //     listpokemon.appendChild(button);
-    //     pokemonList.appendChild(listpokemon);
-
-    //     button.addEventListener('click', function () {
-    //         loadDetails(pokemon).then(function () {
-    //             showDetails(pokemon);
-    //         });
-    //     });
-    // }
 
     // Function to fetch and load Pokémon list from API
     function loadList() {
