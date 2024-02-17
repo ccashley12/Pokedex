@@ -38,27 +38,6 @@ let pokemonRepository = (function () {
         modalBody.append(abilitiesElement);
     }   
 
-    // Function to hide modal when visible
-    function hideModal() {
-        let modalContainer = document.querySelector('#modal-container');
-        modalContainer.classList.remove('is-visible');
-    }
-
-    // Hide modal by pressing down Escape on keyboard
-    window.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && modalContainer.classList.contains('is-visible')) {
-            hideModal(); 
-        }
-    });
-
-    // Hide modal when user clicks outside of modal
-    modalContainer.addEventListener('click', (e) => {
-        let target = e.target;
-        if (target === modalContainer) {
-            hideModal();
-        }
-    });
-
     // Function to add Pokémon to the list
     function add (pokemon) {
         if (
