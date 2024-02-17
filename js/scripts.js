@@ -118,7 +118,7 @@ let pokemonRepository = (function () {
             return response.json();
         }).then(function (details) {
             pokemon.imageUrlFront = details.sprites.front_default;
-            pokemon.imageElementBack = details.sprites.back_default;
+            pokemon.imageUrlBack = details.sprites.back_default;
             pokemon.height = details.height;
             pokemon,weight = details.weight;
             pokemon.types = details.types.map((type) => type.type.name);
