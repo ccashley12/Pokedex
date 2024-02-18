@@ -4,13 +4,10 @@ background color: goldenrod
 
 */
 
-.page-container {
-    margin-top: 100px;
-}
-
 body {
     background-color: goldenrod;
     font-family: "Chakra Petch", sans-serif;
+    margin-top: 55px;
 }
 
 #modal-container {
@@ -37,3 +34,4 @@ body {
     display: grid;
     text-align: center;
 }
+
