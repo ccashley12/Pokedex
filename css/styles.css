@@ -10,28 +10,3 @@ body {
     margin-top: 55px;
 }
 
-#modal-container {
-    display: none;
-}
-
-#modal-container.is-visible {
-    position: fixed;
-    padding: 15px;
-    box-sizing: border-box;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: blanchedalmond;
-
-    /* To show modal above other content*/
-    z-index: 999;
-
-    /* to allow scrolling if the screen is not high enough*/
-    overflow: auto;
-
-    /* this is used to center the modal */
-    display: grid;
-    text-align: center;
-}
-
