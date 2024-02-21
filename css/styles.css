@@ -8,5 +8,6 @@ body {
     background-color: goldenrod;
     font-family: "Chakra Petch", sans-serif;
     margin-top: 55px;
+    cursor: pointer;
 }
 
