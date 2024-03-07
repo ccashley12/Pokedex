@@ -12,22 +12,17 @@
         modalTitle.empty();
 
         // creating element for name in modal content
-        const nameElement = $("<h1>" + item.name + "</h1>");
+        const nameElement = $(`<h1>${item.name}</h1>`);
         // creating img in modal content
         const imageElementFront = $(`<img class="modal-img" src="${item.imageUrlFront}">`);
-        // imageElementFront.attr("src", item.imageUrlFront);
         const imageElementBack = $(`<img class="modal-img" src="${item.imageUrlBack}">`);
-        // imageElementBack.attr("src", item.imageUrlBack);
         // creating height element in modal content
         const heightElement = $(`<p>Height : ${item.height}</p>`);
-        // const heightElement = $("<p>" + "Height : " + item.height + "</p>");
         // creating type element in modal content
         const typesElement = $(`<p>Types : ${item.types}</p>`);
-        // const typesElement = $("<p>" + "Types : " + item.types + "</p>");
         // creating abilities element in modal content
         const abilitiesElement = $(
             `<p>Abilities : ${item.abilities}</p>`
-            // "<p>" + "Abilities : " + item.abilities + "</p>",
         );
 
         modalTitle.append(nameElement);
