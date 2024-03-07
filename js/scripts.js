@@ -16,6 +16,7 @@ const pokemonRepository = (function () {
         // creating img in modal content
         const imageElementFront = $(`<img class="modal-img" src="${item.imageUrlFront}">`);
         // imageElementFront.attr("src", item.imageUrlFront);
+        const imageElementBack = $(`<img class="modal-img" src="${item.imageUrlBack}">`);
         // imageElementBack.attr("src", item.imageUrlBack);
         // creating height element in modal content
         const heightElement = $(`<p>Height : ${item.height}</p>`);
