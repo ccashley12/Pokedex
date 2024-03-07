@@ -1,29 +1,29 @@
-let pokemonRepository = (function () {
-    let pokemonList = [];
-    let apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=150";
+const pokemonRepository = (function () {
+    const pokemonList = [];
+    const apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=150";
 
     // Function to show details of Pokémon in modals
     function showModal(item) {
-        let modalBody = $(".modal-body");
-        let modalTitle = $(".modal-title");
+        const modalBody = $(".modal-body");
+        const modalTitle = $(".modal-title");
 
         // clear existing content of the modal
         modalBody.empty();
         modalTitle.empty();
 
         // creating element for name in modal content
-        let nameElement = $("<h1>" + item.name + "</h1>");
+        const nameElement = $("<h1>" + item.name + "</h1>");
         // creating img in modal content
-        let imageElementFront = $('<img class="modal-img" style="width:50%">');
+        const imageElementFront = $('<img class="modal-img">');
         imageElementFront.attr("src", item.imageUrlFront);
-        let imageElementBack = $('<img class="modal-img" style="width:50%">');
+        const imageElementBack = $('<img class="modal-img">');
         imageElementBack.attr("src", item.imageUrlBack);
         // creating height element in modal content
-        let heightElement = $("<p>" + "Height : " + item.height + "</p>");
+        const heightElement = $("<p>" + "Height : " + item.height + "</p>");
         // creating type element in modal content
-        let typesElement = $("<p>" + "Types : " + item.types + "</p>");
+        const typesElement = $("<p>" + "Types : " + item.types + "</p>");
         // creating abilities element in modal content
-        let abilitiesElement = $(
+        const abilitiesElement = $(
             "<p>" + "Abilities : " + item.abilities + "</p>",
         );
 
@@ -57,7 +57,7 @@ let pokemonRepository = (function () {
             })
             .then(function (json) {
                 json.results.forEach(function (item) {
-                    let pokemonDetails = {
+                    const pokemonDetails = {
                         name: item.name,
                         detailsUrl: item.url,
                         height: item.height,
@@ -74,7 +74,7 @@ let pokemonRepository = (function () {
 
     // Function to fetch and load details for specific Pokémon
     function loadDetails(pokemon) {
-        let url = pokemon.detailsUrl;
+        const url = pokemon.detailsUrl;
         return fetch(url)
             .then(function (response) {
                 return response.json();
@@ -101,8 +101,8 @@ let pokemonRepository = (function () {
     }
 
     $('#exampleModal').on('hidden.bs.modal', function (e) {
-        let modalBody = $(".modal-body");
-        let modalTitle = $(".modal-title");
+        const modalBody = $(".modal-body");
+        const modalTitle = $(".modal-title");
 
         // clear existing content of the modal
         modalBody.empty();
@@ -120,10 +120,10 @@ let pokemonRepository = (function () {
 
 // Fetch and load Pokémon list and create list items for each Pokémon
 pokemonRepository.loadList().then(() => {
-    let pokemonList = pokemonRepository.getAll();
+    const pokemonList = pokemonRepository.getAll();
     pokemonList.forEach((pokemon) => {
         // Create list item for each Pokemon
-        let listItem = document.createElement("li");
+        const listItem = document.createElement("li");
         listItem.classList.add("list-group-item");
         listItem.innerText = pokemon.name;
 
