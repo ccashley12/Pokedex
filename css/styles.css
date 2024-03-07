@@ -11,3 +11,6 @@ body {
     cursor: pointer;
 }
 
+.modal-img {
+    width: 50%;
+}
