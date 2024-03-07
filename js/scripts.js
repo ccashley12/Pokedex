@@ -107,7 +107,7 @@ let pokemonRepository = (function () {
         // clear existing content of the modal
         modalBody.empty();
         modalTitle.empty();
-      })
+    });
 
     return {
         add: add,
