@@ -1,4 +1,4 @@
-const pokemonRepository = (function () {
+(function () {
     const pokemonList = [];
     const apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=150";
 
@@ -112,30 +112,22 @@ const pokemonRepository = (function () {
         modalTitle.empty();
     });
 
-    return {
-        add: add,
-        getAll: getAll,
-        loadList: loadList,
-        loadDetails: loadDetails,
-        showDetails: showDetails,
-    };
-})();
-
-// Fetch and load Pokémon list and create list items for each Pokémon
-pokemonRepository.loadList().then(() => {
-    const pokemonList = pokemonRepository.getAll();
-    pokemonList.forEach((pokemon) => {
-        // Create list item for each Pokemon
-        const listItem = document.createElement("li");
-        listItem.classList.add("list-group-item");
-        listItem.innerText = pokemon.name;
-
-        // // Add click event to show details in modal
-        listItem.addEventListener("click", () => {
-            pokemonRepository.showDetails(pokemon);
-            $("#exampleModal").modal("show");
+    // Fetch and load Pokémon list and create list items for each Pokémon
+    loadList().then(() => {
+        const pokemonList = getAll();
+        pokemonList.forEach((pokemon) => {
+            // Create list item for each Pokemon
+            const listItem = document.createElement("li");
+            listItem.classList.add("list-group-item");
+            listItem.innerText = pokemon.name;
+    
+            // // Add click event to show details in modal
+            listItem.addEventListener("click", () => {
+                showDetails(pokemon);
+                $("#exampleModal").modal("show");
+            });
+    
+            $(".list-group").append(listItem);
         });
-
-        $(".list-group").append(listItem);
     });
-});
+})();
