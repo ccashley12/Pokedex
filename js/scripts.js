@@ -8,8 +8,8 @@ let pokemonRepository = (function () {
         let modalTitle = $(".modal-title");
 
         // clear existing content of the modal
-        modalBody.empty();
-        modalTitle.empty();
+        // modalBody.empty();
+        // modalTitle.empty();
 
         // creating element for name in modal content
         let nameElement = $("<h1>" + item.name + "</h1>");
@@ -99,6 +99,15 @@ let pokemonRepository = (function () {
             showModal(pokemon);
         });
     }
+
+    $('#exampleModal').on('hidden.bs.modal', function (e) {
+        let modalBody = $(".modal-body");
+        let modalTitle = $(".modal-title");
+
+        // clear existing content of the modal
+        modalBody.empty();
+        modalTitle.empty();
+      })
 
     return {
         add: add,
