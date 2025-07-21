@@ -47,48 +47,61 @@
         return pokemonList;
     }
 
+    // Function to render the Pokemon list
+    function displayPokemonList(list) {
+        const pokemonListElement = document.querySelector('.pokemon-list');
+        pokemonListElement.innerHTML = ''; // Clear list before re-rendering
+      
+        list.forEach((pokemon) => {
+          const listItem = document.createElement("li");
+          listItem.classList.add("list-group-item");
+          listItem.innerText = pokemon.name;
+      
+          listItem.addEventListener("click", () => {
+            showDetails(pokemon);
+            $("#exampleModal").modal("show");
+          });
+      
+          pokemonListElement.appendChild(listItem);
+        });
+    }
+      
+
     // Function to fetch and load Pokémon list from API
-    function loadList() {
-        return fetch(apiUrl)
-            .then(function (response) {
-                return response.json();
-            })
-            .then(function (json) {
-                json.results.forEach(function (item) {
-                    const pokemonDetails = {
-                        name: item.name,
-                        detailsUrl: item.url,
-                        height: item.height,
-                        type: item.types,
-                    };
-                    add(pokemonDetails);
-                    console.log(pokemonDetails);
-                });
-            })
-            .catch(function (e) {
-                console.error(e);
+    async function loadList() {
+        try {
+            const response = await fetch(apiUrl);
+            const json = await response.json();
+            json.results.forEach(function (item) {
+                const pokemonDetails = {
+                    name: item.name,
+                    detailsUrl: item.url,
+                    height: item.height,
+                    type: item.types,
+                };
+                add(pokemonDetails);
+                console.log(pokemonDetails);
             });
+        } catch (e) {
+            console.error(e);
+        }
     }
 
     // Function to fetch and load details for specific Pokémon
-    function loadDetails(pokemon) {
+    async function loadDetails(pokemon) {
         const url = pokemon.detailsUrl;
-        return fetch(url)
-            .then(function (response) {
-                return response.json();
-            })
-            .then(function (details) {
-                pokemon.imageUrlFront = details.sprites.front_default;
-                pokemon.imageUrlBack = details.sprites.back_default;
-                pokemon.height = details.height;
-                pokemon.types = details.types.map((type) => type.type.name);
-                pokemon.abilities = details.abilities.map(
-                    (ability) => ability.ability.name,
-                );
-            })
-            .catch(function (e) {
-                console.error(e);
-            });
+        try {
+            const response = await fetch(url);
+            const details = await response.json();
+            pokemon.imageUrlFront = details.sprites.front_default;
+            pokemon.imageUrlBack = details.sprites.back_default;
+            pokemon.height = details.height;
+            pokemon.types = details.types.map((type) => type.type.name);
+            pokemon.abilities = details.abilities.map(
+                (ability) => ability.ability.name);
+        } catch (e) {
+            console.error(e);
+        }
     }
 
     // Function to show details of a Pokémon and show modal
@@ -110,19 +123,16 @@
     // Fetch and load Pokémon list and create list items for each Pokémon
     loadList().then(() => {
         const pokemonList = getAll();
-        pokemonList.forEach((pokemon) => {
-            // Create list item for each Pokemon
-            const listItem = document.createElement("li");
-            listItem.classList.add("list-group-item");
-            listItem.innerText = pokemon.name;
-    
-            // // Add click event to show details in modal
-            listItem.addEventListener("click", () => {
-                showDetails(pokemon);
-                $("#exampleModal").modal("show");
-            });
-    
-            $(".list-group").append(listItem);
-        });
+        displayPokemonList(pokemonList);
     });
+
+    // Search functionality
+    document.getElementById('search-bar').addEventListener('input', (e) => {
+        const searchTerm = e.target.value.toLowerCase();
+        const filteredPokemon = getAll().filter((pokemon) =>
+          pokemon.name.toLowerCase().includes(searchTerm)
+        );
+        displayPokemonList(filteredPokemon);
+      });
+
 })();
