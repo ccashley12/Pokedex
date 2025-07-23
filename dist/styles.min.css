@@ -11,24 +11,15 @@ body {
     cursor: pointer;
 }
 
-.navbar-brand {
-    cursor: pointer;
-}
-
 .form-control:focus {
     color:black;
     border: solid 3px;
     border-color: goldenrod;
 }
 
-.modal-container:hover {
-    cursor: pointer;
-}
-
 .modal-img {
     width: 50%;
 }
-
 
 .pokemon-list {
     padding: 0;
