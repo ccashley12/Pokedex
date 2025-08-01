@@ -11,32 +11,26 @@ body {
     cursor: pointer;
 }
 
-.navbar-brand {
-    cursor: pointer;
-}
-
-.form-control {
+.form-control:focus {
+    color:black;
+    border: solid 3px;
     border-color: goldenrod;
-    border-width: thick;
-}
-
-.modal-container:hover {
-    cursor: pointer;
 }
 
 .modal-img {
     width: 50%;
 }
 
+.pokemon-list {
+    padding: 0;
+}
+
 .pokemon-list .list-group-item {
-    background-color: goldenrod;
+    background-color: #fff;
     cursor: pointer;
-    padding: 1rem 2rem;
-    border-radius: 8px;
     font-weight: bold;
-    position: relative;
     overflow: hidden;
-    transition: all 0.3s ease;
+    transition: all 0.7s ease;
 }
   
 /* Hover fade effect using a mask */
@@ -47,7 +41,7 @@ body {
     mask-size: 200%;
     -webkit-mask-position: left;
     mask-position: left;
-    animation: fade-left-to-right 0.6s forwards;
+    animation: fade-left-to-right 2s forwards;
 }
 
 /* Animate the mask moving left to right */
